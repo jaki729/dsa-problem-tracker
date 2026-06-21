@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>dsa_sheet.go — DSA Sheet Tracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,800;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<div class="titlebar">
+  <button class="menubtn" id="menubtn">☰</button>
+  <div class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div>
+  <div class="filename">dsa_sheet.go<span class="cursor"></span></div>
+  <div class="meta" id="metaInfo">connecting to backend…</div>
+</div>
+
+<div class="wrap">
+  <aside class="sidebar" id="sidebar">
+    <div class="sb-header">Topics</div>
+    <div id="topicList"></div>
+  </aside>
+
+  <main class="main">
+    <div class="progress-card">
+      <div class="row1">
+        <div>
+          <div class="label">// overall progress · served from Go backend</div>
+          <div class="big" id="bigCount">0 <span class="of">/ solved</span></div>
+        </div>
+        <span class="reset-link" id="resetBtn">reset all progress</span>
+      </div>
+      <div class="legend">
+        <span><span class="swatch solved"></span>solved</span>
+        <span><span class="swatch revisit"></span>revisit</span>
+        <span><span class="swatch todo"></span>todo</span>
+      </div>
+      <div class="barwrap"><div class="seg solved" id="segSolved"></div><div class="seg revisit" id="segRevisit"></div></div>
+    </div>
+
+    <div class="controls">
+      <input class="search" id="search" placeholder="search problems… (e.g. anagram, two sum)" />
+      <div class="filterbtns">
+        <button class="fbtn active" data-f="all">all</button>
+        <button class="fbtn" data-f="todo">todo</button>
+        <button class="fbtn" data-f="solved">solved</button>
+        <button class="fbtn" data-f="revisit">revisit</button>
+      </div>
+    </div>
+
+    <div id="content"></div>
+
+    <div class="footer-note">
+      click a <kbd>status</kbd> pill to cycle: todo → solved → revisit → todo. Progress is stored
+      <b>server-side in Go</b> (a small JSON-file store), keyed to a session cookie — no login needed,
+      but it's per-browser, not per-account.
+    </div>
+  </main>
+</div>
+
+<script src="/app.js"></script>
+</body>
+</html>
